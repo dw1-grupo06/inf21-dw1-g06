@@ -1,4 +1,17 @@
 openapi: 3.0.0
+info:
+  title: Car Dealership
+  description: An API that relates a car with it's engine, manufacturer and owner.
+  contact:
+    name: Grupo06
+    email: a038692@ismai.pt
+  version: 0.0.1
+servers:
+- url: http://localhost:8080
+  description: standard
+  variables:
+    basePath:
+      default: /
 
 components:
   schemas:
@@ -180,19 +193,6 @@ components:
         age: 0
         sex: sex
         
-info:
-  title: Stand de Carros
-  description: Uma API que relaciona um carro com o seu motor, fabricante e dono.
-  contact:
-    name: Grupo06
-    email: a038692@ismai.pt
-  version: 0.0.1
-servers:
-- url: http://localhost:8080
-  description: standard
-  variables:
-    basePath:
-      default: /
 paths:
   /engines:
     get:
