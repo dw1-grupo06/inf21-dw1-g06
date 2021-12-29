@@ -1,0 +1,889 @@
+openapi: 3.0.0
+info:
+  title: Car Dealership
+  description: "An API that relates a car with it's engine, manufacturer and owner."
+  contact:
+    name: Grupo06
+    email: a038692@ismai.pt
+  version: 0.0.1
+servers:
+- url: http://localhost:8080
+  description: standard
+  variables:
+    basePath:
+      default: /
+paths:
+  /engines:
+    get:
+      tags:
+      - EnginesController
+      summary: Retrieve engines
+      operationId: retrieveEngines
+      responses:
+        "200":
+          description: Array of engines model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Engine'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: EnginesController
+    post:
+      tags:
+      - EnginesController
+      summary: Create Engine
+      operationId: createEngine
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Engine'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/EngineExample01'
+              EngineExample02:
+                $ref: '#/components/examples/EngineExample02'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Engine'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/EngineExample01'
+              EngineExample02:
+                $ref: '#/components/examples/EngineExample02'
+      responses:
+        "200":
+          description: Create a Engine model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Engine'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Engine'
+        "400":
+          description: Bad request
+      x-swagger-router-controller: EnginesController
+  /Engine/{id}:
+    get:
+      tags:
+      - EnginesController
+      summary: Retrieve Engine
+      operationId: retrieveEngine
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Engine id 1
+            value: 1
+          two:
+            summary: Retrieve Engine id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Engine'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Engine'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: EnginesController
+    put:
+      tags:
+      - EnginesController
+      summary: Update Engine
+      operationId: updateEngine
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Engine id 1
+            value: 1
+          two:
+            summary: Update Engine id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Engine'
+            examples:
+              AeroportoExample01:
+                $ref: '#/components/examples/EngineExample01'
+              AeroportoExample02:
+                $ref: '#/components/examples/EngineExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Engine PUT success
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: EnginesController
+    delete:
+      tags:
+      - EnginesController
+      summary: Delete Engine
+      operationId: deleteEngine
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Engine id 1
+            value: 1
+          two:
+            summary: Delete Engine id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: EnginesController
+  /Cars:
+    get:
+      tags:
+      - CarsController
+      summary: Retrieve Cars
+      operationId: retrieveCars
+      responses:
+        "200":
+          description: Array of Car model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+      x-swagger-router-controller: CarsController
+    post:
+      tags:
+      - CarsController
+      summary: Create Car
+      operationId: createCar
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        "200":
+          description: Create a Car model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Car'
+        "400":
+          description: Bad request
+      x-swagger-router-controller: CarsController
+  /Car/{id}:
+    get:
+      tags:
+      - CarsController
+      summary: Retrieve Car
+      operationId: retrieveCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Car id 1
+            value: 1
+          two:
+            summary: Retrieve Car id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Car'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: CarsController
+    put:
+      tags:
+      - CarsController
+      summary: Update Car
+      operationId: updateCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Car id 1
+            value: 1
+          two:
+            summary: Update Car id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+            examples:
+              AeroportoExample01:
+                $ref: '#/components/examples/CarExample01'
+              AeroportoExample02:
+                $ref: '#/components/examples/CarExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Car PUT success
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: CarsController
+    delete:
+      tags:
+      - CarsController
+      summary: Delete Car
+      operationId: deleteCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Car id 1
+            value: 1
+          two:
+            summary: Delete Car id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: CarsController
+  /Manufacturers:
+    get:
+      tags:
+      - ManufacturersController
+      summary: Retrieve Manufacturers
+      operationId: retrieveManufacturers
+      responses:
+        "200":
+          description: Array of manufacturers model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Manufacturer'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: ManufacturersController
+    post:
+      tags:
+      - ManufacturersController
+      summary: Create Manufacturer
+      operationId: createManufacturer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Manufacturer'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/ManufacturerExample01'
+              EngineExample02:
+                $ref: '#/components/examples/ManufacturerExample02'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Manufacturer'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/ManufacturerExample01'
+              EngineExample02:
+                $ref: '#/components/examples/ManufacturerExample02'
+      responses:
+        "200":
+          description: Create a Manufacturer model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+        "400":
+          description: Bad request
+      x-swagger-router-controller: ManufacturersController
+  /Manufacturer/{id}:
+    get:
+      tags:
+      - ManufacturersController
+      summary: Retrieve Manufacturer
+      operationId: retrieveManufacturer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Manufacturer id 1
+            value: 1
+          two:
+            summary: Retrieve Manufacturer id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Manufacturer'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: ManufacturersController
+    put:
+      tags:
+      - ManufacturersController
+      summary: Update Manufacturer
+      operationId: updateManufacturer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Manufacturer id 1
+            value: 1
+          two:
+            summary: Update Manufacturer id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Manufacturer'
+            examples:
+              AeroportoExample01:
+                $ref: '#/components/examples/ManufacturerExample01'
+              AeroportoExample02:
+                $ref: '#/components/examples/ManufacturerExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Manufacturer PUT success
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: ManufacturersController
+    delete:
+      tags:
+      - ManufacturersController
+      summary: Delete Manufacturer
+      operationId: deleteManufacturer
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Manufacturer id 1
+            value: 1
+          two:
+            summary: Delete Manufacturer id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: ManufacturersController
+  /Owners:
+    get:
+      tags:
+      - OwnersController
+      summary: Retrieve Owners
+      operationId: retrieveOwners
+      responses:
+        "200":
+          description: Array of Owners model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Owner'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: OwnersController
+    post:
+      tags:
+      - OwnersController
+      summary: Create Owner
+      operationId: createOwner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Owner'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/OwnerExample01'
+              EngineExample02:
+                $ref: '#/components/examples/OwnerExample02'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Owner'
+            examples:
+              EngineExample01:
+                $ref: '#/components/examples/OwnerExample01'
+              EngineExample02:
+                $ref: '#/components/examples/OwnerExample02'
+      responses:
+        "200":
+          description: Create a Owner model instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Owner'
+        "400":
+          description: Bad request
+      x-swagger-router-controller: OwnersController
+  /Owner/{id}:
+    get:
+      tags:
+      - OwnersController
+      summary: Retrieve Owner
+      operationId: retrieveOwner
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Owner id 1
+            value: 1
+          two:
+            summary: Retrieve Owner id 2
+            value: 2
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Owner'
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: OwnersController
+    put:
+      tags:
+      - OwnersController
+      summary: Update Owner
+      operationId: updateOwner
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Update Owner id 1
+            value: 1
+          two:
+            summary: Update Owner id 2
+            value: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Owner'
+            examples:
+              AeroportoExample01:
+                $ref: '#/components/examples/OwnerExample01'
+              AeroportoExample02:
+                $ref: '#/components/examples/OwnerExample02'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                description: Owner PUT success
+                x-content-type: application/json
+        "400":
+          description: Bad request
+        "404":
+          description: id not found
+      x-swagger-router-controller: OwnersController
+    delete:
+      tags:
+      - OwnersController
+      summary: Delete Owner
+      operationId: deleteOwner
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Delete Owner id 1
+            value: 1
+          two:
+            summary: Delete Owner id 2
+            value: 2
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: id not found
+      x-swagger-router-controller: OwnersController
+  /Car/{id}/Engines:
+    get:
+      tags:
+      - EnginesByCarController
+      summary: Retrieve Engines based on Car ID
+      operationId: retrieveEnginesOnCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Engine id 1
+            value: 1
+          two:
+            summary: Retrieve Engine id 2
+            value: 2
+      responses:
+        "200":
+          description: Array of Engines model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Engine'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: EnginesByCarController
+components:
+  schemas:
+    Car:
+      title: Car
+      required:
+      - description
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+      additionalProperties: false
+      example:
+        color: color
+        name: name
+        description: description
+        id: 0
+    Engine:
+      title: Engine
+      required:
+      - brand
+      - horsepower
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        horsepower:
+          type: integer
+          format: int64
+        brand:
+          type: string
+        car_id:
+          type: integer
+          format: int64
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        horsepower: 0
+        brand: brand
+        car_id: 0
+    Manufacturer:
+      title: Manufacturer
+      required:
+      - description
+      - founded
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        founded:
+          type: integer
+          format: int64
+        description:
+          type: string
+        car_id:
+          type: integer
+          format: int64
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        founded: 0
+        description: description
+        car_id: 0
+    Owner:
+      title: Owner
+      required:
+      - age
+      - name
+      - sex
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        age:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        car_id:
+          type: integer
+          format: int64
+      additionalProperties: false
+      example:
+        id: 0
+        name: name
+        age: 0
+        sex: sex
+        car_id: 0
+    inline_response_200:
+      type: object
+      properties:
+        Engine:
+          type: array
+          items:
+            $ref: '#/components/schemas/Engine'
+      xml:
+        name: Engine
+    inline_response_200_1:
+      type: object
+      properties:
+        Car:
+          type: array
+          items:
+            $ref: '#/components/schemas/Car'
+      xml:
+        name: Car
+  examples:
+    CarExample01:
+      value:
+        id: 1
+        name: Car 01
+        description: Car 01 description
+    CarExample02:
+      value:
+        id: 2
+        name: Car 02
+        description: Car 02 description
+    EngineExample01:
+      value:
+        id: 1
+        name: Engine 01
+        brand: Brand 01
+        horsepower: 0
+    EngineExample02:
+      value:
+        id: 2
+        name: Engine 02
+        brand: Brand 02
+        horsepower: 0
+    ManufacturerExample01:
+      value:
+        id: 1
+        name: Manufacturer 01
+        description: Manufacturer 01 description
+        founded: 0
+    ManufacturerExample02:
+      value:
+        id: 2
+        name: Manufacturer 02
+        description: Manufacturer 02 description
+        founded: 0
+    OwnerExample01:
+      value:
+        id: 1
+        name: Owner 01
+        description: Owner 01 description
+        age: 0
+        sex: sex
+    OwnerExample02:
+      value:
+        id: 2
+        name: Owner 02
+        description: Owner 02 description
+        age: 0
+        sex: sex
