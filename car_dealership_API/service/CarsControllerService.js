@@ -10,18 +10,16 @@ var sql = require('../utils/db.js');
  **/
 exports.createCar = function(body) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "color" : "color",
-  "name" : "name",
-  "description" : "description",
-  "id" : 0
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    console.log(body);
+    sql.query("INSERT INTO car (name, description, color) values (?,?,?)", [body.name, body.description, body.color], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }else{
+        console.log(res.insertId);
+        resolve(res.insertId);
+      }
+    });
   });
 }
 
@@ -34,7 +32,16 @@ exports.createCar = function(body) {
  **/
 exports.deleteCar = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    sql.query("DELETE FROM car WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err);
+        console.log(res);
+        reject();
+      } else{
+        console.log(res);
+        resolve({"deleted ":id})
+      }
+    });
   });
 }
 
@@ -45,20 +52,17 @@ exports.deleteCar = function(id) {
  * id Long 
  * returns Car
  **/
-exports.retrieveCar = function(id) {
+ exports.retrieveCar = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "color" : "color",
-  "name" : "name",
-  "description" : "description",
-  "id" : 0
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM car WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -70,23 +74,15 @@ exports.retrieveCar = function(id) {
  **/
 exports.retrieveCars = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "color" : "color",
-  "name" : "name",
-  "description" : "description",
-  "id" : 0
-}, {
-  "color" : "color",
-  "name" : "name",
-  "description" : "description",
-  "id" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM car", function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -100,7 +96,15 @@ exports.retrieveCars = function() {
  **/
 exports.updateCar = function(body,id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    sql.query("UPDATE car SET name = ?, description = ?, color = ? WHERE id = ?", [body.name, body.description, body.color, id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 

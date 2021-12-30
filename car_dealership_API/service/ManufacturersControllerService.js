@@ -10,19 +10,16 @@ var sql = require('../utils/db.js');
  **/
 exports.createManufacturer = function(body) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "name",
-  "founded" : 0,
-  "description" : "description",
-  "car_id" : 0
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    console.log(body);
+    sql.query("INSERT INTO manufacturer (name, founded, description, car_id) values (?,?,?,?)", [body.name, body.founded, body.description, body.car_id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }else{
+        console.log(res.insertId);
+        resolve(res.insertId);
+      }
+    });
   });
 }
 
@@ -35,7 +32,16 @@ exports.createManufacturer = function(body) {
  **/
 exports.deleteManufacturer = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    sql.query("DELETE FROM manufacturer WHERE id = ?", [id], function (err, res) {
+      if (err || !res.affectedRows) {
+        console.log(err);
+        console.log(res);
+        reject();
+      } else{
+        console.log(res);
+        resolve({"deleted ":id})
+      }
+    });
   });
 }
 
@@ -48,19 +54,15 @@ exports.deleteManufacturer = function(id) {
  **/
 exports.retrieveManufacturer = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "name",
-  "founded" : 0,
-  "description" : "description",
-  "car_id" : 0
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM manufacturer WHERE id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res[0]);
+      }
+    });
   });
 }
 
@@ -72,25 +74,15 @@ exports.retrieveManufacturer = function(id) {
  **/
 exports.retrieveManufacturers = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "name" : "name",
-  "founded" : 0,
-  "description" : "description",
-  "car_id" : 0
-}, {
-  "id" : 0,
-  "name" : "name",
-  "founded" : 0,
-  "description" : "description",
-  "car_id" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM manufacturer", function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
 
@@ -104,7 +96,14 @@ exports.retrieveManufacturers = function() {
  **/
 exports.updateManufacturer = function(body,id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    sql.query("UPDATE manufacturer SET name = ?, founded = ?, description = ?, car_id = ? WHERE id = ?", [body.name, body.founded, body.description, body.car_id, id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
-

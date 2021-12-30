@@ -10,25 +10,14 @@ var sql = require('../utils/db.js');
  **/
 exports.retrieveEnginesOnCar = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "name" : "name",
-  "horsepower" : 0,
-  "brand" : "brand",
-  "car_id" : 0
-}, {
-  "id" : 0,
-  "name" : "name",
-  "horsepower" : 0,
-  "brand" : "brand",
-  "car_id" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM engine WHERE car_id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
-
