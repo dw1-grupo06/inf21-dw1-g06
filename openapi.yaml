@@ -149,11 +149,18 @@ components:
         id: 1
         name: Car 01
         description: Car 01 description
+        color: Car 01 color
     CarExample02:
       value:
         id: 2
         name: Car 02
         description: Car 02 description
+        color: Car 02 color
+    CarInsert:
+      value:
+        name: Car
+        description: Car description
+        color: Car color
     EngineExample01:
       value:
         id: 1
@@ -166,6 +173,11 @@ components:
         name: Engine 02
         brand: Brand 02
         horsepower: 0
+    EngineInsert:
+      value:
+        name: Engine
+        brand: Engine brand
+        horsepower: Engine horsepower
     ManufacturerExample01:
       value:
         id: 1
@@ -177,6 +189,11 @@ components:
         id: 2
         name: Manufacturer 02
         description: Manufacturer 02 description
+        founded: 0
+    ManufacturerInsert:
+      value:
+        name: Manufacturer
+        description: Manufacturer description
         founded: 0
     OwnerExample01:
       value:
@@ -192,7 +209,12 @@ components:
         description: Owner 02 description
         age: 0
         sex: sex
-        
+    OwnerInsert:
+      value:
+        name: Owner
+        age: 0
+        sex: Owner sex
+
 paths:
   /engines:
     get:
@@ -225,6 +247,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Engine'
             examples:
+              EngineInsert:
+                $ref: '#/components/examples/EngineInsert'
               EngineExample01:
                 $ref: '#/components/examples/EngineExample01'
               EngineExample02:
@@ -317,9 +341,11 @@ paths:
             schema:
               $ref: '#/components/schemas/Engine'
             examples:
-              AeroportoExample01:
+              EngineUpdate:
+                $ref: '#/components/examples/EngineInsert'
+              EngineExample01:
                 $ref: '#/components/examples/EngineExample01'
-              AeroportoExample02:
+              EngineExample02:
                 $ref: '#/components/examples/EngineExample02'
         required: true
       responses:
@@ -394,6 +420,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Car'
+            examples:
+              CarInsert:
+                $ref: '#/components/examples/CarInsert'
+              CarExample01:
+                $ref: '#/components/examples/CarExample01'
+              CarExample02:
+                $ref: '#/components/examples/CarExample02'
           application/xml:
             schema:
               $ref: '#/components/schemas/Car'
@@ -477,9 +510,11 @@ paths:
             schema:
               $ref: '#/components/schemas/Car'
             examples:
-              AeroportoExample01:
+              CarUpdate:
+                $ref: '#/components/examples/CarInsert'
+              CarExample01:
                 $ref: '#/components/examples/CarExample01'
-              AeroportoExample02:
+              CarExample02:
                 $ref: '#/components/examples/CarExample02'
         required: true
       responses:
@@ -555,14 +590,18 @@ paths:
             schema:
               $ref: '#/components/schemas/Manufacturer'
             examples:
-              EngineExample01:
+              ManufacturerInsert:
+                $ref: '#/components/examples/ManufacturerInsert'
+              ManufacturerExample01:
                 $ref: '#/components/examples/ManufacturerExample01'
-              EngineExample02:
+              ManufacturerExample02:
                 $ref: '#/components/examples/ManufacturerExample02'
           application/xml:
             schema:
               $ref: '#/components/schemas/Manufacturer'
             examples:
+              ManufacturerInsert:
+                $ref: '#/components/examples/ManufacturerInsert'
               EngineExample01:
                 $ref: '#/components/examples/ManufacturerExample01'
               EngineExample02:
@@ -646,9 +685,11 @@ paths:
             schema:
               $ref: '#/components/schemas/Manufacturer'
             examples:
-              AeroportoExample01:
+              ManufacturerUpdate:
+                $ref: '#/components/examples/ManufacturerInsert'
+              ManufacturerExample01:
                 $ref: '#/components/examples/ManufacturerExample01'
-              AeroportoExample02:
+              ManufacturerExample02:
                 $ref: '#/components/examples/ManufacturerExample02'
         required: true
       responses:
@@ -724,17 +765,21 @@ paths:
             schema:
               $ref: '#/components/schemas/Owner'
             examples:
-              EngineExample01:
+              OwnerInsert:
+                $ref: '#/components/examples/OwnerInsert'
+              OwnerExample01:
                 $ref: '#/components/examples/OwnerExample01'
-              EngineExample02:
+              OwnerExample02:
                 $ref: '#/components/examples/OwnerExample02'
           application/xml:
             schema:
               $ref: '#/components/schemas/Owner'
             examples:
-              EngineExample01:
+              OwnerInsert:
+                $ref: '#/components/examples/OwnerInsert'
+              OwnerExample01:
                 $ref: '#/components/examples/OwnerExample01'
-              EngineExample02:
+              OwnerExample02:
                 $ref: '#/components/examples/OwnerExample02'
       responses:
         "200":
@@ -815,9 +860,11 @@ paths:
             schema:
               $ref: '#/components/schemas/Owner'
             examples:
-              AeroportoExample01:
+              OwnerUpdate:
+                $ref: '#/components/examples/OwnerInsert'
+              OwnerExample01:
                 $ref: '#/components/examples/OwnerExample01'
-              AeroportoExample02:
+              OwnerExample02:
                 $ref: '#/components/examples/OwnerExample02'
         required: true
       responses:
@@ -899,3 +946,80 @@ paths:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
       x-swagger-router-controller: EnginesByCarController
+
+  /Car/{id}/Owners:
+    get:
+      tags:
+      - OwnersByCarController
+      summary: Retrieve Owners based on Car ID
+      operationId: retrieveOwnersOnCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Owner id 1
+            value: 1
+          two:
+            summary: Retrieve Owner id 2
+            value: 2
+      responses:
+        "200":
+          description: Array of Owners model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Owner'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: OwnersByCarController
+
+
+  /Car/{id}/Manufacturers:
+    get:
+      tags:
+      - ManufacturersByCarController
+      summary: Retrieve Manufacturers based on Car ID
+      operationId: retrieveManufacturersOnCar
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          minimum: 1
+          type: integer
+          format: int64
+        examples:
+          one:
+            summary: Retrieve Manufacturer id 1
+            value: 1
+          two:
+            summary: Retrieve Manufacturer id 2
+            value: 2
+      responses:
+        "200":
+          description: Array of Manufacturers model instances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Manufacturer'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      x-swagger-router-controller: ManufacturersByCarController
