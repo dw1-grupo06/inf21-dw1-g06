@@ -15,7 +15,6 @@
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
-    "mysql": "^2.18.1",
     "oas3-tools": "^2.2.3"
   }
 }
