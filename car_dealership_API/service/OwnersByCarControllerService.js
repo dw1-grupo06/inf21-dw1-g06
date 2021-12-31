@@ -1,4 +1,5 @@
 'use strict';
+var sql = require('../utils/db.js');
 
 
 /**
@@ -9,25 +10,14 @@
  **/
 exports.retrieveOwnersOnCar = function(id) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "name" : "name",
-  "age" : 0,
-  "sex" : "sex",
-  "car_id" : 0
-}, {
-  "id" : 0,
-  "name" : "name",
-  "age" : 0,
-  "sex" : "sex",
-  "car_id" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    sql.query("SELECT * FROM owner WHERE car_id = ?", [id], function (err, res) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log(res);
+        resolve(res);
+      }
+    });
   });
 }
-
