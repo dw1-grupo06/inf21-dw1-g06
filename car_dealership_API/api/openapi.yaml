@@ -972,6 +972,7 @@ components:
         name: Engine
         brand: Engine brand
         horsepower: Engine horsepower
+        car_id: 0
     ManufacturerExample01:
       value:
         id: 1
@@ -989,6 +990,7 @@ components:
         name: Manufacturer
         description: Manufacturer description
         founded: 0
+        car_id: 0
     OwnerExample01:
       value:
         id: 1
@@ -1008,3 +1010,4 @@ components:
         name: Owner
         age: 0
         sex: Owner sex
+        car_id: 0

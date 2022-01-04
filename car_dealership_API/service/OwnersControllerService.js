@@ -75,7 +75,7 @@ exports.retrieveOwner = function(id) {
  **/
 exports.retrieveOwners = function() {
   return new Promise(function(resolve, reject) {
-    sql.query("SELECT * FROM engine", function (err, res) {
+    sql.query("SELECT * FROM owner", function (err, res) {
       if (err) {
         console.log(err);
         reject(err);
