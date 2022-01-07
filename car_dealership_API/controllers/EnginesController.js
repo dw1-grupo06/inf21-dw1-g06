@@ -5,6 +5,7 @@ var EnginesController = require('../service/EnginesControllerService');
 
 module.exports.createEngine = function createEngine (req, res, next, body) {
   EnginesController.createEngine(body)
+    .then(EnginesController.retrieveEngine)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -5,6 +5,7 @@ var CarsController = require('../service/CarsControllerService');
 
 module.exports.createCar = function createCar (req, res, next, body) {
   CarsController.createCar(body)
+    .then(CarsController.retrieveCars)
     .then(function (response) {
       utils.writeJson(res, response);
     })

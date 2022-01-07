@@ -5,6 +5,7 @@ var ManufacturersController = require('../service/ManufacturersControllerService
 
 module.exports.createManufacturer = function createManufacturer (req, res, next, body) {
   ManufacturersController.createManufacturer(body)
+    .then(ManufacturersController.retrieveManufacturers)
     .then(function (response) {
       utils.writeJson(res, response);
     })

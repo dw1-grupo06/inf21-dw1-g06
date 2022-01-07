@@ -5,6 +5,7 @@ var OwnersController = require('../service/OwnersControllerService');
 
 module.exports.createOwner = function createOwner (req, res, next, body) {
   OwnersController.createOwner(body)
+  .then(OwnerController.OwnerManufacturers)
     .then(function (response) {
       utils.writeJson(res, response);
     })
