@@ -16,6 +16,10 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 
 ## Galeria
 
+| Aspecto da API |
+| A | B | C |
+| D | E | F |
+
 ## Tecnologias
 
 De forma a desenvolver este projeto, foi necessário recorrer à utilização de várias tecnologias, usufruindo também do recurso a frameworks e bibliotecas.<br>
