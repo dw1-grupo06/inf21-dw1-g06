@@ -1,7 +1,11 @@
 # Capítulo 1 : Car Dealpership API
 
 ## Descrição
-A API de projeto é composta por 7 controladores:
+
+Esta API foi desenvolvida com o recurso à OpenAPI, baseada na Arquitetura REST.
+A API tem o intuito de fazer a gestão de um Concessionário de Automóveis. Consegue oferecer informação sobre motores, carros, fabricantes e proprietários. Abaixo apresenta-se todas as funcionalidades para controlar toda a informação descrita anteriormente.
+
+A API é composta por 7 controladores:
 * EngineController
 * CarsController
 * ManufacturersController
