@@ -1,3 +1,9 @@
+<style>
+th {
+    border: none;
+}
+</style>
+
 # Car Dealership API / Momento de Avaliação 2
 
 Repositório criado no âmbito do projeto desenvolvido para a Unidade Curricular de 'Desenvolvimento Web I', uma cadeira de segundo ano no 'ISMAI', no curso de 'Informática'.<br>
@@ -15,12 +21,6 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 * **[Documento OpenAPI](src/api/openapi.yaml)** inicial.
 
 ## Galeria
-
-<style>
-th {
-    border: none;
-}
-</style>
 
 | Aspecto da API | | |
 | :---: | :---: | :---: |
