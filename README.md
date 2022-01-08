@@ -16,9 +16,9 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 
 ## Galeria
 
-| Aspecto da API | | |
+| | | |
 | :---: | :---: | :---: |
-| A | B | C |
+| | | |
 
 ## Tecnologias
 
