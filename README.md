@@ -1,7 +1,7 @@
 # Car Dealership API / Momento de Avaliação 2
 
 Repositório criado no âmbito do projeto desenvolvido para a Unidade Curricular de 'Desenvolvimento Web I', uma cadeira de segundo ano no 'ISMAI', no curso de 'Informática'.<br>
-Desenvolvido pelo Grupo 6: [@Cacheira14](https://github.com/Cacheira14), [@brunomfsrw1](https://github.com/brunomfsrw1), Raul Gonçalves [@RaulGoncalves21x](https://github.com/RaulGoncalves21x)
+Desenvolvido pelo Grupo 6: André Cacheira ([@Cacheira14](https://github.com/Cacheira14)), Bruno Sousa ([@brunomfsrw1](https://github.com/brunomfsrw1)), Raul Gonçalves ([@RaulGoncalves21x](https://github.com/RaulGoncalves21x)).
 
 ## Breve Descrição
 
