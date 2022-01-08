@@ -13,6 +13,7 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 * **Código fonte** presente na pasta [src](src/).
 * **Documentação** presente na pasta [doc](doc/).
 * **[Documento OpenAPI](src/api/openapi.yaml)** inicial.
+* **[Documento MYSQL](dealership_v1.sql)** para criação da Base de Dados.
 
 ## Galeria
 
