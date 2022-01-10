@@ -14,6 +14,7 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 * **Documentação** presente na pasta [doc](doc/).
 * **[Documento OpenAPI](src/api/openapi.yaml)** inicial.
 * **[Documento MYSQL](dealership_v1.sql)** para criação da Base de Dados.
+* **[Documento Docker-compose](docker-compose.yaml)** para puxar as imagens dos repositórios DockerHub e montar a aplicação.
 
 ## Galeria
 
