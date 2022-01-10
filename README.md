@@ -44,8 +44,6 @@ Mais especificamente:
 * Capítulo 2: [Recursos](doc/capitulo2.md)
 ### Produto
 * Capítulo 3: [Produto](doc/capitulo3.md)
-### Apresentação Final
-* Capítulo 4: [Apresentação Final](doc/capitulo4.md) 
 
 ## Equipa
 
