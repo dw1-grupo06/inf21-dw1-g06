@@ -18,7 +18,7 @@ Desta forma, o recurso 'Carro' será o recurso central, já que este terá um do
 
 ## Galeria
 
-|![pic1](docs/pics/pic1.png)| | |
+|![pic1](doc/pics/pic1.png)| | |
 | :---: | :---: | :---: |
 | | | |
 
