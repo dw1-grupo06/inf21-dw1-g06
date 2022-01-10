@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  mysql:
+    container_name: dealership-mysql
+    image: dwgrupo06/rep1:m2-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      # schema?
+    networks:
+      - dealership-network
+    ports:
+      - 3306:3306
+  app:
+    depends_on:
+      - mysql
+    container_name: dealership-app
+    image: dwgrupo06/rep2:m2-app
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8080:8080
+    networks:
+      - dealership-network
+
+networks:
+  dealership-network:
