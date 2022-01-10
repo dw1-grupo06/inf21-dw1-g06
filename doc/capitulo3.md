@@ -12,6 +12,11 @@ Com vista a API poder ser montada rapidamente, ignorando definições anteriores
 ## 3.2 Instalação
 
 ## 3.3 Instruções de Utilização
+Depois de instalada, basta executar os dois containers através do Docker Desktop e ligar-se ao endereço http://localhost:8080/docs/ através do seu browser.
+Aqui terá acesso completo a todas as funções da API.
+As operações estarão visivelmente marcadas com os verbos HTTP que lhes corresponde e terão uma breve descrição da sua função. Selecionando uma das operações um menu irá ser visível onde estará o botão "Try it out" exposto. Premindo este botão temos acesso a um campo de texto caso esteja a inserir ou a editar um recurso, ou terá imediatamente o resultado da sua operação, se esta for de consulta.
+
+**No caso de inserção ou atualização:** Como referido anteriormente, a API possui três exemplos para cada recurso: dois com o aspeto final do recurso e um com o aspeto recomendado para a inserção. É então recomendado que quando crie ou atualize um recurso, utilize este exemplo, geralmente denominado por *NomeRecurso*Insert ou *NomeRecurso*Update. Estes exemplos terão valores como *placeholders* que deverão ser eliminados a fim de evitar confusão.
 
 ## 3.4 Detalhes de Implementação
 
